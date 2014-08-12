@@ -18,12 +18,23 @@ module.exports = function (grunt) {
 		// The loader config should go here.
 		amdloader: {
 			// Here goes the config for the amd plugins build process.
-			baseUrl: libdir,
+			baseUrl: "./",
 
 			packages: [
-				{name: "app", location: "../app/"}
+				{name: "dcl", location: libdir + "dcl"},
+				{name: "decor", location: libdir + "decor"},
+				{name: "delite", location: libdir + "delite"},
+				{name: "deliteful", location: libdir + "deliteful"},
+				{name: "dojo", location: libdir + "dojo"},
+				{name: "dpointer", location: libdir + "dpointer"},
+				{name: "dstore", location: libdir + "dstore"},
+				{name: "ecma402", location: libdir + "ecma402"},
+				{name: "requirejs", location: libdir + "requirejs"},
+				{name: "requirejs-domready", location: libdir + "requirejs-domready"},
+				{name: "requirejs-dplugins", location: libdir + "requirejs-dplugins"},
+				{name: "requirejs-text", location: libdir + "requirejs-text"}
 			],
-			
+
 			config: {
 				// text should be replace by the module id of text plugin
 				text: {
