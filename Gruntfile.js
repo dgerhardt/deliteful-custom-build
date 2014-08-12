@@ -1,12 +1,13 @@
 "use strict";
 
 module.exports = function (grunt) {
+	var libdir = "bower_components/";
 
 	// A temporary directory used by amdserialize to output the processed modules.
-	var tmpdir = "./tmp/";
+	var tmpdir = "tmp/";
 
 	// The final output directory.
-	var outdir = "./out/";
+	var outdir = "out/";
 
 	// The grunt.config property populated by amdserialize, containing the
 	// list of files to include in the layer.
@@ -17,6 +18,12 @@ module.exports = function (grunt) {
 		// The loader config should go here.
 		amdloader: {
 			// Here goes the config for the amd plugins build process.
+			baseUrl: libdir,
+
+			packages: [
+				{name: "app", location: "../app/"}
+			],
+			
 			config: {
 				// text should be replace by the module id of text plugin
 				text: {
@@ -39,9 +46,10 @@ module.exports = function (grunt) {
 
 			// List of layers to build.
 			layers: [{
-				name: "layerName",
+				name: "app",
 				include: [
 					// Modules and layers listed here, and their dependencies, will be added to the layer.
+					"app/app"
 				],
 				includeShallow: [
 					// Only the modules listed here (ie. NOT their dependencies) will be added to the layer.

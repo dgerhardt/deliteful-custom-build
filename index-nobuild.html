@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<link rel="stylesheet" href="css/app.css">
-		<link rel="stylesheet" href="bower_components/delite/themes/defaultapp.css">
 		<script src="bower_components/requirejs/require.js"></script>
 		<script>
+			var libdir = "bower_components/";
 			require.config({
-				baseUrl: "out/"
+				baseUrl: libdir,
+				packages: [
+					{name: "app", location: "../app"}
+				]
 			});
 		</script>
-		<script src="out/app.js"></script>
+		<script src="app/app.js"></script>
 	</head>
 	<body style="display: none">
 
