@@ -3,7 +3,11 @@
 	"version": "0.0.1",
 	"private": true,
 	"devDependencies": {
-		"grunt": "~0.4.1"
+		"grunt": "~0.4.1",
+		"grunt-amd-build": "~0.7.4-dev",
+		"grunt-contrib-clean": "0.6.x",
+		"grunt-contrib-concat": "0.5.x",
+		"grunt-contrib-copy": "0.5.x"
 	},
 	"engines": {
 		"node": ">=0.8.0"
