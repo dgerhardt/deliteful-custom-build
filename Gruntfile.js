@@ -62,7 +62,8 @@ module.exports = function (grunt) {
 				name: "app",
 				include: [
 					// Modules and layers listed here, and their dependencies, will be added to the layer.
-					"app/app"
+					"app/app",
+					"requirejs-text/text"
 				],
 				includeShallow: [
 					// Only the modules listed here (ie. NOT their dependencies) will be added to the layer.
@@ -94,6 +95,12 @@ module.exports = function (grunt) {
 				cwd: tmpdir,
 				src: "<%= " + outprop + ".plugins.rel %>",
 				dest: outdir
+			},
+			templates: {
+				expand: true,
+				cwd: libdir,
+				src: ["**/*.html", "!**/demos/**", "!**/node_modules/**", "!**/samples/**", "!**/tests/**"],
+				dest: outdir
 			}
 		},
 
@@ -116,6 +123,7 @@ module.exports = function (grunt) {
 			grunt.task.run("concat");
 			grunt.task.run("copy");
 		});
+		grunt.task.run("copy:templates");
 	});
 
 
