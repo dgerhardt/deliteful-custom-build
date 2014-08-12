@@ -42,7 +42,9 @@ module.exports = function (grunt) {
 			dir: tmpdir,
 
 			// List of plugins that the build should not try to resolve at build time.
-			runtimePlugins: [],
+			runtimePlugins: [
+				"ecma402/features"
+			],
 
 			// List of layers to build.
 			layers: [{
