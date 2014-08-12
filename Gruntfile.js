@@ -108,6 +108,18 @@ module.exports = function (grunt) {
 		clean: {
 			erase: [outdir],
 			finish: [tmpdir]
+		},
+
+		uglify: {
+			options: {
+				drop_console: true
+			},
+			uglify: {
+				files: [{
+					src: outdir + "app.js",
+					dest: outdir + "app.min.js"
+				}]
+			}
 		}
 	});
 
@@ -123,6 +135,7 @@ module.exports = function (grunt) {
 			grunt.task.run("concat");
 			grunt.task.run("copy");
 		});
+		grunt.task.run("uglify:uglify");
 		grunt.task.run("copy:templates");
 	});
 
@@ -134,6 +147,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-concat");
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks("grunt-contrib-uglify");
 
 	// Default task.
 	grunt.registerTask("default", ["clean:erase", "amdbuild:amdloader", "clean:finish"]);

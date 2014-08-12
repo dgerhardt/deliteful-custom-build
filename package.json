@@ -7,7 +7,8 @@
 		"grunt-amd-build": "~0.7.4-dev",
 		"grunt-contrib-clean": "0.6.x",
 		"grunt-contrib-concat": "0.5.x",
-		"grunt-contrib-copy": "0.5.x"
+		"grunt-contrib-copy": "0.5.x",
+		"grunt-contrib-uglify": "~0.2.2"
 	},
 	"engines": {
 		"node": ">=0.8.0"
