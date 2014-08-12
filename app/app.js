@@ -1,6 +1,8 @@
 require([
 	"delite/register",
+	"delite/theme!delite/themes/defaultapp.css",
 	"delite/theme!delite/themes/{{theme}}/global.css",
+	"delite/css!app/css/app.css",
 	"deliteful/ViewStack",
 	"deliteful/SidePane",
 	"deliteful/LinearLayout",
