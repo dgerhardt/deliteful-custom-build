@@ -7,6 +7,7 @@ require([
 	"deliteful/Button",
 	"deliteful/StarRating",
 	"deliteful/ProgressBar",
+	"deliteful/ProgressIndicator",
 	"deliteful/list/List",
 	"requirejs-domready/domReady!"
 ], function(register) {
