@@ -93,6 +93,11 @@ module.exports = function (grunt) {
 				cwd: tmpdir,
 				src: "<%= " + outprop + ".plugins.rel %>",
 				dest: outdir
+			},
+			index: {
+				expand: true,
+				src: "index.html",
+				dest: outdir
 			}
 		},
 
@@ -107,10 +112,16 @@ module.exports = function (grunt) {
 				drop_console: true
 			},
 			uglify: {
-				files: [{
-					src: outdir + "app.js",
-					dest: outdir + "app.min.js"
-				}]
+				files: [
+					{
+						src: outdir + "app.js",
+						dest: outdir + "app.min.js"
+					},
+					{
+						src: libdir + "requirejs/require.js",
+						dest: outdir + "requirejs/require.js"
+					}
+				]
 			}
 		}
 	});
@@ -128,6 +139,7 @@ module.exports = function (grunt) {
 			grunt.task.run("copy");
 		});
 		grunt.task.run("uglify:uglify");
+		grunt.task.run("copy:index");
 	});
 
 
