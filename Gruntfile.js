@@ -132,12 +132,29 @@ module.exports = function (grunt) {
 					}
 				]
 			}
+		},
+
+		shell: {
+			bowerInstall: {
+				command: "bower install"
+			},
+			deliteNpmInstall: {
+				command: "npm install",
+				options: {
+					execOptions: {
+						cwd: libdir + "delite/"
+					}
+				}
+			}
 		}
 	});
 
 
 	// The main build task.
 	grunt.registerTask("amdbuild", function (amdloader) {
+		grunt.task.run("shell:bowerInstall");
+		grunt.task.run("shell:deliteNpmInstall");
+
 		var name = this.name,
 			layers = grunt.config(name).layers;
 
@@ -162,6 +179,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks("grunt-contrib-uglify");
+	grunt.loadNpmTasks('grunt-shell');
 
 	// Default task.
 	grunt.registerTask("default", ["clean:erase", "amdbuild:amdloader", "clean:finish"]);
