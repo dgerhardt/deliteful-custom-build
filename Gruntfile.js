@@ -68,6 +68,8 @@ module.exports = function (grunt) {
 				],
 				exclude: [
 					// Modules and layers listed here, and their dependencies, will NOT be in the layer.
+					// Temporary fix for Google Chrome:
+					//"dcl/dcl"
 				],
 				excludeShallow: [
 					// Only the modules listed here (ie. NOT their dependencies)  will NOT be in the layer.
@@ -94,6 +96,13 @@ module.exports = function (grunt) {
 				src: "<%= " + outprop + ".plugins.rel %>",
 				dest: outdir
 			},
+			// Needed for Google Chrome fix:
+			//dcl: {
+			//	expand: true,
+			//	cwd: libdir,
+			//	src: "dcl/**",
+			//	dest: outdir
+			//},
 			index: {
 				expand: true,
 				src: "index.html",
@@ -140,6 +149,8 @@ module.exports = function (grunt) {
 		});
 		grunt.task.run("uglify:uglify");
 		grunt.task.run("copy:index");
+		// Needed for Google Chrome fix:
+		//grunt.task.run("copy:dcl");
 	});
 
 
