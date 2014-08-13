@@ -35,11 +35,9 @@ module.exports = function (grunt) {
 				{name: "requirejs-text", location: libdir + "requirejs-text"}
 			],
 
+			inlineText: true,
+
 			config: {
-				// text should be replace by the module id of text plugin
-				text: {
-					inlineText: true
-				},
 				// i18n should be replace by the module id of i18n plugin
 				i18n: {
 					localesList: ["fr"]
@@ -95,12 +93,6 @@ module.exports = function (grunt) {
 				cwd: tmpdir,
 				src: "<%= " + outprop + ".plugins.rel %>",
 				dest: outdir
-			},
-			templates: {
-				expand: true,
-				cwd: libdir,
-				src: ["**/*.html", "!**/demos/**", "!**/node_modules/**", "!**/samples/**", "!**/tests/**"],
-				dest: outdir
 			}
 		},
 
@@ -136,7 +128,6 @@ module.exports = function (grunt) {
 			grunt.task.run("copy");
 		});
 		grunt.task.run("uglify:uglify");
-		grunt.task.run("copy:templates");
 	});
 
 
